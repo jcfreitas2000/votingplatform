@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+    database:
+        image: postgres
+        environment:
+            POSTGRES_DB: "db"
+            POSTGRES_PASSWORD: "123"
+        ports:
+            - "54321:5432"
+        volumes:
+            - "db-data:/var/lib/postgresql/data"
+
+    # You could create a connection to postgresql on pgadmin using:
+    # - host: database
+    # - port: 5432
+    # - password: 123
+    pg-admin:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "josecfreitas@outlook.com.br"
+            PGADMIN_DEFAULT_PASSWORD: "123"
+        ports:
+            - "15432:80"
+        volumes:
+            - "pg-data:/var/lib/pgadmin"
+        depends_on:
+            - database
+
+volumes:
+    db-data:
+    pg-data:
+
+networks:
+    default:
+        driver: bridge
