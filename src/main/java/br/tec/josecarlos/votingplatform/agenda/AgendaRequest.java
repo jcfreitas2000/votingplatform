@@ -1,12 +1,14 @@
 package br.tec.josecarlos.votingplatform.agenda;
 
 import br.tec.josecarlos.votingplatform.models.Agenda;
+import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotEmpty;
 
 @Setter
+@Getter
 public class AgendaRequest {
 
     @NotEmpty
