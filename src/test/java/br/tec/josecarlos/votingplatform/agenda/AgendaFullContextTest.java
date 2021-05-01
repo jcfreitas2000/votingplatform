@@ -1,19 +1,22 @@
 package br.tec.josecarlos.votingplatform.agenda;
 
 import br.tec.josecarlos.votingplatform.models.Agenda;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class AgendaIntegrationTest {
+@ActiveProfiles("test")
+class AgendaFullContextTest {
 
     private static final String URI = "/agendas";
 
@@ -29,7 +32,10 @@ class AgendaIntegrationTest {
     public void setUp() {
         genericAgenda = new Agenda();
         genericAgenda.setName("Generic Agenda");
+    }
 
+    @AfterEach
+    public void clean() {
         agendaRepository.deleteAll();
     }
 
