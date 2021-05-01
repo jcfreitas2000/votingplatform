@@ -20,7 +20,10 @@ public class AgendaService {
     public Agenda find(UUID id) {
         return agendaRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        String.format("Agenda %s not found.", id.toString())
+                ));
     }
 
     public List<Agenda> list() {
