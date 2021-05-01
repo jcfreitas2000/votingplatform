@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
 class AgendaFullContextTest {
 
     private static final String URI = "/agendas";
