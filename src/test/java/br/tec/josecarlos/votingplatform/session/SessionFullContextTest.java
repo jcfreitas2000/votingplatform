@@ -14,7 +14,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -131,6 +130,7 @@ class SessionFullContextTest {
 
     @Test
     public void testCreate_whenValidDeadline_thanCreates() throws Exception {
+        agendaRepository.save(genericAgenda);
         genericSession.setDeadline(LocalDateTime.now().plus(10, ChronoUnit.MINUTES));
 
         mockMvc

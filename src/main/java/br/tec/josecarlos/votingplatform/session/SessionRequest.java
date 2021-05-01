@@ -19,7 +19,7 @@ public class SessionRequest {
     @Future
     private LocalDateTime deadline;
     @Valid
-    private AgendaRequest agendaRequest;
+    private AgendaRequest agenda;
 
     public Session map() {
         Session session = new Session();
@@ -36,6 +36,6 @@ public class SessionRequest {
     public static class AgendaRequest {
 
         @NotNull
-        private UUID agendaId;
+        private UUID id;
     }
 }

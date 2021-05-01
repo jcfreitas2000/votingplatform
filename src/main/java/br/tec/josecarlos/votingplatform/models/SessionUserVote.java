@@ -3,23 +3,25 @@ package br.tec.josecarlos.votingplatform.models;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Data
-@EqualsAndHashCode(of = {"user", "session"})
+@EqualsAndHashCode(of = {"userCpf", "session"})
 @Entity
 @IdClass(SessionUserVotePK.class)
-public class SessionUserVote {
+public class SessionUserVote extends AbstractEntity<SessionUserVotePK> {
 
     @Id
-    @ManyToOne
-    private User user;
+    private String userCpf;
     @Id
     @ManyToOne
     private Session session;
 
-    private boolean agreed;
+    @Column(nullable = false)
+    private Boolean agreed;
+
+    @Override
+    public SessionUserVotePK getId() {
+        return new SessionUserVotePK(userCpf, session);
+    }
 }
