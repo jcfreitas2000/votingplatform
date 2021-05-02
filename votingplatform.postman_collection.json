@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "c1982fc8-d64e-48e0-b03b-669b81d4323f",
+		"name": "votingplatform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "agenda",
+			"item": [
+				{
+					"name": "find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostUrl}}/agendas/4ad71549-bbf3-40b8-b027-bcd41bd6429c",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"agendas",
+								"4ad71549-bbf3-40b8-b027-bcd41bd6429c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostUrl}}/agendas",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"agendas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"One generic agenda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostUrl}}/agendas",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"agendas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "user-vote",
+					"item": [
+						{
+							"name": "vote",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userCpf\": \"12345678911\",\r\n    \"agreed\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostUrl}}/sessions/27f59172-c125-4c03-8a99-042b32bda271/votes",
+									"host": [
+										"{{hostUrl}}"
+									],
+									"path": [
+										"sessions",
+										"27f59172-c125-4c03-8a99-042b32bda271",
+										"votes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "votes-report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostUrl}}/sessions/27f59172-c125-4c03-8a99-042b32bda271/votes",
+									"host": [
+										"{{hostUrl}}"
+									],
+									"path": [
+										"sessions",
+										"27f59172-c125-4c03-8a99-042b32bda271",
+										"votes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostUrl}}/sessions/61d7ee4f-8c52-40c0-b613-96ef81c971fd",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"sessions",
+								"61d7ee4f-8c52-40c0-b613-96ef81c971fd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostUrl}}/sessions",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"agenda\": {\r\n        \"id\": \"4ad71549-bbf3-40b8-b027-bcd41bd6429c\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostUrl}}/sessions",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostUrl",
+			"value": "localhost:8080"
+		}
+	]
+}

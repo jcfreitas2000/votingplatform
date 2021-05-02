@@ -18,6 +18,7 @@ public class SessionRequest {
 
     @Future
     private LocalDateTime deadline;
+    @NotNull
     @Valid
     private AgendaRequest agenda;
 

@@ -32,6 +32,7 @@ public class SessionService {
     }
 
     public Session create(Session session) {
+        session.setAgenda(agendaService.find(session.getAgenda().getId()));
         sessionRepository.save(session);
 
         log.info("Successfully created a new session: {}", session);

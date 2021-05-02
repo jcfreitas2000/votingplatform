@@ -115,17 +115,21 @@ class SessionFullContextTest {
 
     @Test
     public void testCreate_whenEmptyDeadline_thanCreatesDefaultDeadline() throws Exception {
+        agendaRepository.save(genericAgenda);
+        genericSession.setDeadline(null);
+
         mockMvc
                 .perform(post(URI)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{}")
+                        .content(jacksonObjectMapper.writeValueAsString(genericSession))
                 )
                 .andExpect(status().isCreated())
                 .andExpect(header().string(
                         "Location",
                         Matchers.containsString(String.format("%s/", URI))
                 ))
-                .andExpect(jsonPath("deadline", startsWith(genericSession.getDeadline().truncatedTo(ChronoUnit.MINUTES).toString())));
+                // TODO improve this test to compare if both are close dates, and not exactly the same
+                .andExpect(jsonPath("deadline", startsWith(new Session().getDeadline().truncatedTo(ChronoUnit.SECONDS).toString())));
     }
 
     @Test
